@@ -23,7 +23,6 @@ android_app {
         "kotlinx-coroutines-android",
         "gson",
         "hilt_android",
-        "YASP-preference",
         "androidx.activity_activity-compose",
         "androidx.compose.animation_animation-core",
         "androidx.compose.animation_animation-graphics",
