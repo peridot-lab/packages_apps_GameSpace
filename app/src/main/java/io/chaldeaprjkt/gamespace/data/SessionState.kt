@@ -23,7 +23,6 @@ import androidx.annotation.Keep
 data class SessionState(
     var packageName: String,
     var autoBrightness: Boolean? = null,
-    var statusbarBrightness: Boolean? = null,
     var headsup: Boolean? = null,
     var threeScreenshot: Int = 0,
     var ringerMode: Int = AudioManager.RINGER_MODE_NORMAL,
