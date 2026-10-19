@@ -31,8 +31,7 @@ class ScreenUtils @Inject constructor(private val context: Context) {
 
     fun takeScreenshot(onComplete: ((Uri?) -> Unit)? = null) {
         ScreenshotHelper(context).takeScreenshot(
-            WindowManager.TAKE_SCREENSHOT_FULLSCREEN,
             WindowManager.ScreenshotSource.SCREENSHOT_GLOBAL_ACTIONS, handler
-        ) { handler.post { onComplete?.invoke(it) } }
+        ) { uri -> handler.post { onComplete?.invoke(uri) } }
     }
 }

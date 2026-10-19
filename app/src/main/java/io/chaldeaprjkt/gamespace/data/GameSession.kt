@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 Chaldeaprjkt
- *               2022-2026 crDroid Android Project
+ *               2022 crDroid Android Project
  * Copyright (C) 2023 risingOS Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -58,15 +58,12 @@ class GameSession @Inject constructor(
         state = SessionState(
             packageName = sessionName,
             autoBrightness = systemSettings.autoBrightness,
-            statusbarBrightness = systemSettings.statusbarBrightness,
             headsup = systemSettings.headsup,
             threeScreenshot = systemSettings.threeScreenshot,
             ringerMode = audioManager.ringerModeInternal,
-            pulseBassHaptics = systemSettings.pulseBassHaptics,
         )
         if (appSettings.noAutoBrightness) {
             systemSettings.autoBrightness = false
-            systemSettings.statusbarBrightness = false
         }
         if (appSettings.danmakuNotification) {
             systemSettings.headsup = false
@@ -80,16 +77,12 @@ class GameSession @Inject constructor(
         if (appSettings.stayAwake) {
             systemSettings.stayAwake = true
         }
-        if (appSettings.noPulseBassHaptics) {
-            systemSettings.pulseBassHaptics = 0
-        }
     }
 
     fun unregister() {
         val orig = state?.copy() ?: return
         if (appSettings.noAutoBrightness) {
             orig.autoBrightness?.let { systemSettings.autoBrightness = it }
-            orig.statusbarBrightness?.let { systemSettings.statusbarBrightness = it }
         }
         if (appSettings.danmakuNotification) {
             orig.headsup?.let { systemSettings.headsup = it }
@@ -99,9 +92,6 @@ class GameSession @Inject constructor(
         }
         if (appSettings.ringerMode != 3) {
             audioManager.ringerModeInternal = orig.ringerMode
-        }
-        if (appSettings.noPulseBassHaptics) {
-            systemSettings.pulseBassHaptics = orig.pulseBassHaptics
         }
         systemSettings.stayAwake = false
         state = null

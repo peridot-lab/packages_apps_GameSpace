@@ -65,12 +65,6 @@
             android:defaultValue="true" />
 
         <SwitchPreferenceCompat
-            android:key="gamespace_pulse_bass_haptics_disabled"
-            android:title="@string/pulse_bass_haptics_disabled_title"
-            android:summary="@string/pulse_bass_haptics_disabled_summary"
-            android:defaultValue="true" />
-
-        <SwitchPreferenceCompat
             android:key="gamespace_auto_dnd"
             android:title="@string/auto_dnd_title"
             android:summary="@string/auto_dnd_summary"
@@ -110,13 +104,13 @@
             android:summary="@string/lock_gesture_summary"
             android:defaultValue="false" />
 
-        <com.crdroid.settings.preferences.SystemSettingSwitchPreference
+        <com.yasp.settings.preferences.SystemSettingSwitchPreference
             android:key="bypass_charge_enabled"
             android:title="@string/bypass_charge_enabled_title"
             android:summary="@string/bypass_charge_enabled_summary"
             android:defaultValue="false" />
 
-        <com.crdroid.settings.preferences.CustomSeekBarPreference
+        <com.yasp.settings.preferences.CustomSeekBarPreference
             android:key="gamespace_icon_idle_alpha"
             android:title="@string/icon_idle_opacity_title"
             android:defaultValue="25"

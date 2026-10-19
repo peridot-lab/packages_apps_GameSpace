@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2021 Chaldeaprjkt
- *               2022-2026 crDroid Android Project
+ *               2022 crDroid Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,6 @@ import android.os.UserHandle
 import android.provider.Settings
 import io.chaldeaprjkt.gamespace.utils.GameModeUtils
 import javax.inject.Inject
-
-import lineageos.providers.LineageSettings
 
 class SystemSettings @Inject constructor(
     context: Context,
@@ -65,19 +63,6 @@ class SystemSettings @Inject constructor(
             )
         }
 
-    var statusbarBrightness
-        get() =
-            Settings.System.getIntForUser(
-                resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0,
-                UserHandle.USER_CURRENT
-            ) == 1
-        set(value) {
-            Settings.System.putIntForUser(
-                resolver, Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
-                if (value) 1 else 0, UserHandle.USER_CURRENT
-            )
-        }
-
     var bypassChargeEnabled
         get() =
             Settings.System.getIntForUser(
@@ -103,13 +88,13 @@ class SystemSettings @Inject constructor(
         }
 
     var threeScreenshot
-        get() = LineageSettings.System.getIntForUser(
-            resolver, LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION, 0,
+        get() = Settings.System.getIntForUser(
+            resolver, Settings.System.THREE_FINGER_GESTURE, 0,
             UserHandle.USER_CURRENT
         )
         set(value) {
-            LineageSettings.System.putIntForUser(
-                resolver, LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION,
+            Settings.System.putIntForUser(
+                resolver, Settings.System.THREE_FINGER_GESTURE,
                 value, UserHandle.USER_CURRENT
             )
         }
@@ -144,19 +129,6 @@ class SystemSettings @Inject constructor(
             Settings.System.putIntForUser(
                 resolver, "gamespace_auto_game_detect",
                 if (value) 1 else 0, UserHandle.USER_CURRENT
-            )
-        }
-
-    var pulseBassHaptics
-        get() =
-            Settings.Secure.getIntForUser(
-                resolver, Settings.Secure.PULSE_BASS_HAPTICS, 0,
-                UserHandle.USER_CURRENT
-            )
-        set(value) {
-            Settings.Secure.putIntForUser(
-                resolver, Settings.Secure.PULSE_BASS_HAPTICS,
-                value, UserHandle.USER_CURRENT
             )
         }
 
